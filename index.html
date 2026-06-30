@@ -4,1015 +4,1044 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Valora Systems — AI Made Simple for Small Business</title>
+<meta name="description" content="Valora Systems helps small businesses implement AI — chatbots, voice agents, workflow automation, and more. No tech expertise needed." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  :root {
-    --navy: #050d1a;
-    --navy-2: #080f1f;
-    --navy-mid: #0d1b2e;
-    --navy-card: #0f1e33;
-    --navy-border: #1a2d47;
-    --navy-hover: #142238;
-    --accent: #3a7bd5;
-    --accent-light: #5a9cf0;
-    --accent-glow: rgba(58, 123, 213, 0.18);
-    --accent-dim: rgba(58, 123, 213, 0.08);
-    --white: #ffffff;
-    --off-white: #f0f4fa;
-    --text-primary: #e8eef8;
-    --text-secondary: #8ba3c4;
-    --text-muted: #4a6480;
-    --border: rgba(58, 123, 213, 0.15);
-    --border-subtle: rgba(255,255,255,0.06);
-    --font-display: 'Syne', sans-serif;
-    --font-body: 'DM Sans', sans-serif;
-  }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    background: var(--navy);
-    color: var(--text-primary);
-    font-family: var(--font-body);
-    font-size: 16px;
-    line-height: 1.7;
-    overflow-x: hidden;
-    -webkit-font-smoothing: antialiased;
-  }
-
-  /* ===== NAV ===== */
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    padding: 0 2.5rem;
-    height: 68px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: rgba(5, 13, 26, 0.85);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
-    border-bottom: 1px solid var(--border-subtle);
-    transition: background 0.3s;
-  }
-
-  .logo {
-    font-family: var(--font-display);
-    font-weight: 800;
-    font-size: 1.25rem;
-    letter-spacing: -0.02em;
-    color: var(--white);
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .logo-mark {
-    width: 32px;
-    height: 32px;
-    background: var(--accent);
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.85rem;
-    font-weight: 800;
-    color: #fff;
-    letter-spacing: 0;
-    flex-shrink: 0;
-  }
-
-  .logo span { color: var(--accent-light); }
-
-  .nav-links {
-    display: flex;
-    align-items: center;
-    gap: 2.5rem;
-    list-style: none;
-  }
-
-  .nav-links a {
-    text-decoration: none;
-    color: var(--text-secondary);
-    font-size: 0.9rem;
-    font-weight: 400;
-    letter-spacing: 0.01em;
-    transition: color 0.2s;
-  }
-
-  .nav-links a:hover { color: var(--white); }
-
-  .nav-cta {
-    background: var(--accent) !important;
-    color: var(--white) !important;
-    padding: 0.5rem 1.25rem !important;
-    border-radius: 6px;
-    font-weight: 500 !important;
-    transition: background 0.2s, transform 0.15s !important;
-  }
-
-  .nav-cta:hover { background: var(--accent-light) !important; transform: translateY(-1px); }
-
-  /* ===== HERO ===== */
-  #home {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 8rem 2rem 6rem;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .hero-bg {
-    position: absolute;
-    inset: 0;
-    background:
-      radial-gradient(ellipse 80% 60% at 50% 0%, rgba(58,123,213,0.12) 0%, transparent 70%),
-      radial-gradient(ellipse 40% 40% at 20% 80%, rgba(58,123,213,0.06) 0%, transparent 60%);
-    pointer-events: none;
-  }
-
-  .hero-grid {
-    position: absolute;
-    inset: 0;
-    background-image:
-      linear-gradient(rgba(58,123,213,0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(58,123,213,0.04) 1px, transparent 1px);
-    background-size: 60px 60px;
-    pointer-events: none;
-    mask-image: radial-gradient(ellipse 80% 70% at 50% 30%, black 0%, transparent 80%);
-    -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 30%, black 0%, transparent 80%);
-  }
-
-  .hero-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: var(--accent-dim);
-    border: 1px solid var(--border);
-    border-radius: 100px;
-    padding: 0.4rem 1rem;
-    font-size: 0.8rem;
-    color: var(--accent-light);
-    font-weight: 500;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    margin-bottom: 2rem;
-    position: relative;
-    z-index: 1;
-  }
-
-  .badge-dot {
-    width: 6px;
-    height: 6px;
-    background: var(--accent-light);
-    border-radius: 50%;
-    animation: pulse-dot 2s ease-in-out infinite;
-  }
-
-  @keyframes pulse-dot {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.5; transform: scale(0.8); }
-  }
-
-  h1 {
-    font-family: var(--font-display);
-    font-size: clamp(2.8rem, 6vw, 5rem);
-    font-weight: 800;
-    line-height: 1.08;
-    letter-spacing: -0.03em;
-    color: var(--white);
-    max-width: 820px;
-    margin: 0 auto 1.5rem;
-    position: relative;
-    z-index: 1;
-  }
-
-  h1 .gradient-text {
-    background: linear-gradient(135deg, var(--accent-light) 0%, #a78bfa 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  .hero-sub {
-    font-size: 1.15rem;
-    color: var(--text-secondary);
-    max-width: 580px;
-    margin: 0 auto 2.5rem;
-    font-weight: 300;
-    line-height: 1.75;
-    position: relative;
-    z-index: 1;
-  }
-
-  .hero-buttons {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-    flex-wrap: wrap;
-    position: relative;
-    z-index: 1;
-  }
-
-  .btn-primary {
-    background: var(--accent);
-    color: #fff;
-    padding: 0.875rem 2rem;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 0.95rem;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
-  }
-
-  .btn-primary:hover {
-    background: var(--accent-light);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 32px rgba(58,123,213,0.35);
-  }
-
-  .btn-secondary {
-    background: transparent;
-    color: var(--text-primary);
-    padding: 0.875rem 2rem;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: 400;
-    font-size: 0.95rem;
-    border: 1px solid var(--navy-border);
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    transition: border-color 0.2s, color 0.2s, transform 0.15s;
-  }
-
-  .btn-secondary:hover {
-    border-color: var(--accent);
-    color: var(--white);
-    transform: translateY(-2px);
-  }
-
-  .hero-tagline {
-    margin-top: 3.5rem;
-    font-size: 0.85rem;
-    color: var(--text-muted);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    position: relative;
-    z-index: 1;
-  }
-
-  .hero-stats {
-    display: flex;
-    gap: 3rem;
-    justify-content: center;
-    margin-top: 1.25rem;
-    flex-wrap: wrap;
-    position: relative;
-    z-index: 1;
-  }
-
-  .hero-stat {
-    text-align: center;
-  }
-
-  .hero-stat-num {
-    font-family: var(--font-display);
-    font-size: 1.6rem;
-    font-weight: 700;
-    color: var(--white);
-    letter-spacing: -0.02em;
-  }
-
-  .hero-stat-label {
-    font-size: 0.8rem;
-    color: var(--text-muted);
-    margin-top: 2px;
-  }
-
-  /* ===== SECTION BASICS ===== */
-  section {
-    padding: 7rem 2rem;
-  }
-
-  .container {
-    max-width: 1120px;
-    margin: 0 auto;
-  }
-
-  .section-label {
-    font-size: 0.75rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--accent-light);
-    font-weight: 500;
-    margin-bottom: 0.75rem;
-  }
-
-  .section-title {
-    font-family: var(--font-display);
-    font-size: clamp(2rem, 3.5vw, 2.75rem);
-    font-weight: 700;
-    line-height: 1.15;
-    letter-spacing: -0.025em;
-    color: var(--white);
-    max-width: 600px;
-  }
-
-  .section-sub {
-    font-size: 1rem;
-    color: var(--text-secondary);
-    max-width: 520px;
-    margin-top: 1rem;
-    font-weight: 300;
-  }
-
-  /* ===== SERVICES ===== */
-  #services { background: var(--navy-2); }
-
-  .services-header {
-    text-align: center;
-    margin-bottom: 4rem;
-  }
-
-  .services-header .section-title,
-  .services-header .section-sub { max-width: 680px; margin-left: auto; margin-right: auto; }
-
-  .services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5px;
-    background: var(--navy-border);
-    border: 1px solid var(--navy-border);
-    border-radius: 16px;
-    overflow: hidden;
-  }
-
-  .service-card {
-    background: var(--navy-card);
-    padding: 2rem;
-    transition: background 0.25s;
-    cursor: default;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .service-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 2px;
-    background: linear-gradient(90deg, transparent, var(--accent), transparent);
-    opacity: 0;
-    transition: opacity 0.3s;
-  }
-
-  .service-card:hover { background: var(--navy-hover); }
-  .service-card:hover::before { opacity: 1; }
-
-  .service-icon {
-    width: 44px;
-    height: 44px;
-    background: var(--accent-dim);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 1.25rem;
-    font-size: 1.2rem;
-    color: var(--accent-light);
-  }
-
-  .service-card h3 {
-    font-family: var(--font-display);
-    font-size: 1.05rem;
-    font-weight: 600;
-    color: var(--white);
-    margin-bottom: 0.5rem;
-    letter-spacing: -0.01em;
-  }
-
-  .service-card p {
-    font-size: 0.875rem;
-    color: var(--text-secondary);
-    line-height: 1.65;
-    font-weight: 300;
-  }
-
-  /* ===== WHY VALORA ===== */
-  #why {
-    background: var(--navy);
-    position: relative;
-    overflow: hidden;
-  }
-
-  .why-bg {
-    position: absolute;
-    right: -200px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 600px;
-    height: 600px;
-    background: radial-gradient(ellipse, rgba(58,123,213,0.06) 0%, transparent 70%);
-    pointer-events: none;
-  }
-
-  .why-layout {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 5rem;
-    align-items: center;
-  }
-
-  .why-cards {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-  }
-
-  .why-card {
-    background: var(--navy-card);
-    border: 1px solid var(--navy-border);
-    border-radius: 12px;
-    padding: 1.5rem;
-    transition: border-color 0.2s, transform 0.2s;
-  }
-
-  .why-card:hover {
-    border-color: var(--accent);
-    transform: translateY(-3px);
-  }
-
-  .why-card-icon {
-    font-size: 1.5rem;
-    margin-bottom: 0.75rem;
-    color: var(--accent-light);
-  }
-
-  .why-card h4 {
-    font-family: var(--font-display);
-    font-size: 0.95rem;
-    font-weight: 600;
-    color: var(--white);
-    margin-bottom: 0.4rem;
-    letter-spacing: -0.01em;
-  }
-
-  .why-card p {
-    font-size: 0.8rem;
-    color: var(--text-secondary);
-    line-height: 1.6;
-    font-weight: 300;
-  }
-
-  /* ===== PROCESS ===== */
-  #process { background: var(--navy-2); }
-
-  .process-header {
-    text-align: center;
-    margin-bottom: 4.5rem;
-  }
-
-  .process-header .section-title,
-  .process-header .section-sub { max-width: 560px; margin-left: auto; margin-right: auto; }
-
-  .process-steps {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 0;
-    position: relative;
-  }
-
-  .process-steps::before {
-    content: '';
-    position: absolute;
-    top: 28px;
-    left: 12.5%;
-    right: 12.5%;
-    height: 1px;
-    background: linear-gradient(90deg, var(--accent) 0%, rgba(58,123,213,0.2) 100%);
-    z-index: 0;
-  }
-
-  .process-step {
-    text-align: center;
-    padding: 0 1.5rem;
-    position: relative;
-  }
-
-  .process-num {
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
-    background: var(--navy-card);
-    border: 2px solid var(--accent);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 1.5rem;
-    font-family: var(--font-display);
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--accent-light);
-    position: relative;
-    z-index: 1;
-  }
-
-  .process-step h3 {
-    font-family: var(--font-display);
-    font-size: 1.05rem;
-    font-weight: 600;
-    color: var(--white);
-    margin-bottom: 0.5rem;
-  }
-
-  .process-step p {
-    font-size: 0.85rem;
-    color: var(--text-secondary);
-    line-height: 1.65;
-    font-weight: 300;
-  }
-
-  /* ===== ABOUT ===== */
-  #about {
-    background: var(--navy);
-  }
-
-  .about-layout {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 5rem;
-    align-items: center;
-  }
-
-  .about-visual {
-    background: var(--navy-card);
-    border: 1px solid var(--navy-border);
-    border-radius: 20px;
-    padding: 2.5rem;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .about-visual::before {
-    content: '';
-    position: absolute;
-    top: -50px;
-    right: -50px;
-    width: 200px;
-    height: 200px;
-    background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
-    pointer-events: none;
-  }
-
-  .about-visual-quote {
-    font-family: var(--font-display);
-    font-size: 1.4rem;
-    font-weight: 600;
-    color: var(--white);
-    line-height: 1.4;
-    letter-spacing: -0.02em;
-    margin-bottom: 1.5rem;
-  }
-
-  .about-visual-quote span { color: var(--accent-light); }
-
-  .about-badges {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-
-  .about-badge {
-    background: var(--accent-dim);
-    border: 1px solid var(--border);
-    color: var(--accent-light);
-    font-size: 0.75rem;
-    font-weight: 500;
-    padding: 0.35rem 0.75rem;
-    border-radius: 100px;
-    letter-spacing: 0.02em;
-  }
-
-  .about-text .section-sub { margin-top: 1.5rem; color: var(--text-secondary); }
-
-  .about-mission {
-    margin-top: 2rem;
-    padding: 1.5rem;
-    background: var(--navy-card);
-    border-left: 2px solid var(--accent);
-    border-radius: 0 8px 8px 0;
-  }
-
-  .about-mission p {
-    font-size: 0.9rem;
-    color: var(--text-secondary);
-    font-style: italic;
-    font-weight: 300;
-    line-height: 1.75;
-  }
-
-  /* ===== CONTACT ===== */
-  #contact { background: var(--navy-2); }
-
-  .contact-layout {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-  }
-
-  .contact-form-wrap {
-    background: var(--navy-card);
-    border: 1px solid var(--navy-border);
-    border-radius: 16px;
-    padding: 2.5rem;
-  }
-
-  .form-title {
-    font-family: var(--font-display);
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: var(--white);
-    margin-bottom: 0.5rem;
-  }
-
-  .form-sub {
-    font-size: 0.85rem;
-    color: var(--text-secondary);
-    margin-bottom: 2rem;
-  }
-
-  .form-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-  }
-
-  .form-group {
-    margin-bottom: 1rem;
-  }
-
-  .form-group label {
-    display: block;
-    font-size: 0.78rem;
-    font-weight: 500;
-    color: var(--text-secondary);
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    margin-bottom: 0.4rem;
-  }
-
-  .form-group input,
-  .form-group textarea {
-    width: 100%;
-    background: rgba(255,255,255,0.04);
-    border: 1px solid var(--navy-border);
-    border-radius: 8px;
-    padding: 0.75rem 1rem;
-    color: var(--text-primary);
-    font-family: var(--font-body);
-    font-size: 0.9rem;
-    transition: border-color 0.2s, background 0.2s;
-    outline: none;
-  }
-
-  .form-group input::placeholder,
-  .form-group textarea::placeholder { color: var(--text-muted); }
-
-  .form-group input:focus,
-  .form-group textarea:focus {
-    border-color: var(--accent);
-    background: rgba(58,123,213,0.06);
-  }
-
-  .form-group textarea {
-    resize: vertical;
-    min-height: 110px;
-  }
-
-  .btn-submit {
-    width: 100%;
-    background: var(--accent);
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    padding: 0.9rem;
-    font-family: var(--font-body);
-    font-size: 0.95rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background 0.2s, transform 0.15s;
-    margin-top: 0.5rem;
-  }
-
-  .btn-submit:hover {
-    background: var(--accent-light);
-    transform: translateY(-1px);
-  }
-
-  .form-note {
-    font-size: 0.75rem;
-    color: var(--text-muted);
-    text-align: center;
-    margin-top: 0.75rem;
-  }
-
-  .contact-info {
-    padding-top: 0.5rem;
-  }
-
-  .contact-info .section-sub { margin-top: 1.25rem; }
-
-  .contact-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
-    padding: 1.25rem;
-    background: var(--navy-card);
-    border: 1px solid var(--navy-border);
-    border-radius: 10px;
-  }
-
-  .contact-item-icon {
-    width: 40px;
-    height: 40px;
-    background: var(--accent-dim);
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.1rem;
-    color: var(--accent-light);
-    flex-shrink: 0;
-  }
-
-  .contact-item-text h5 {
-    font-size: 0.85rem;
-    font-weight: 500;
-    color: var(--white);
-    margin-bottom: 0.2rem;
-  }
-
-  .contact-item-text p {
-    font-size: 0.8rem;
-    color: var(--text-secondary);
-    font-weight: 300;
-  }
-
-  /* ===== CALENDAR ===== */
-  #schedule { background: var(--navy); }
-
-  .schedule-wrap {
-    text-align: center;
-  }
-
-  .schedule-wrap .section-title,
-  .schedule-wrap .section-sub { margin-left: auto; margin-right: auto; }
-
-  .calendar-embed {
-    margin-top: 3rem;
-    background: var(--navy-card);
-    border: 1px solid var(--navy-border);
-    border-radius: 16px;
-    overflow: hidden;
-    min-height: 700px;
-    position: relative;
-  }
-
-  .calendar-embed iframe {
-    width: 100%;
-    min-height: 700px;
-    border: none;
-    display: block;
-  }
-
-  .calendar-placeholder {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 400px;
-    gap: 1.5rem;
-    padding: 3rem;
-  }
-
-  .calendar-placeholder-icon {
-    width: 72px;
-    height: 72px;
-    background: var(--accent-dim);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2rem;
-  }
-
-  .calendar-placeholder h3 {
-    font-family: var(--font-display);
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: var(--white);
-  }
-
-  .calendar-placeholder p {
-    font-size: 0.9rem;
-    color: var(--text-secondary);
-    max-width: 400px;
-    text-align: center;
-    font-weight: 300;
-  }
-
-  .calendar-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: var(--accent);
-    color: #fff;
-    padding: 0.75rem 1.5rem;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 0.9rem;
-    transition: background 0.2s;
-  }
-
-  .calendar-link:hover { background: var(--accent-light); }
-
-  /* ===== CTA BANNER ===== */
-  #cta {
-    background: linear-gradient(135deg, #0a1628 0%, #0d1e38 50%, #071020 100%);
-    border-top: 1px solid var(--navy-border);
-    border-bottom: 1px solid var(--navy-border);
-    text-align: center;
-    padding: 7rem 2rem;
-    position: relative;
-    overflow: hidden;
-  }
-
-  #cta::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(58,123,213,0.1) 0%, transparent 70%);
-    pointer-events: none;
-  }
-
-  .cta-title {
-    font-family: var(--font-display);
-    font-size: clamp(2rem, 4vw, 3.25rem);
-    font-weight: 800;
-    letter-spacing: -0.03em;
-    color: var(--white);
-    max-width: 680px;
-    margin: 0 auto 1.25rem;
-    position: relative;
-    z-index: 1;
-    line-height: 1.1;
-  }
-
-  .cta-sub {
-    font-size: 1rem;
-    color: var(--text-secondary);
-    max-width: 440px;
-    margin: 0 auto 2.5rem;
-    font-weight: 300;
-    position: relative;
-    z-index: 1;
-  }
-
-  .cta-buttons {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-    flex-wrap: wrap;
-    position: relative;
-    z-index: 1;
-  }
-
-  /* ===== FOOTER ===== */
-  footer {
-    background: var(--navy-2);
-    padding: 3rem 2rem;
-    border-top: 1px solid var(--border-subtle);
-  }
-
-  .footer-inner {
-    max-width: 1120px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
-
-  .footer-copy {
-    font-size: 0.8rem;
-    color: var(--text-muted);
-  }
-
-  .footer-links {
-    display: flex;
-    gap: 2rem;
-    list-style: none;
-  }
-
-  .footer-links a {
-    font-size: 0.8rem;
-    color: var(--text-muted);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-
-  .footer-links a:hover { color: var(--text-secondary); }
-
-  /* ===== DIVIDER ===== */
-  .divider {
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--navy-border), transparent);
-    margin: 0;
-  }
-
-  /* ===== SUCCESS MSG ===== */
-  .form-success {
-    display: none;
-    text-align: center;
-    padding: 2rem;
-    color: #4ade80;
-    font-size: 1rem;
-  }
-
-  /* ===== MOBILE ===== */
-  @media (max-width: 768px) {
-    nav { padding: 0 1.25rem; }
-    .nav-links { display: none; }
-
-    section { padding: 5rem 1.25rem; }
-
-    .why-layout,
-    .about-layout,
-    .contact-layout { grid-template-columns: 1fr; gap: 2.5rem; }
-
-    .process-steps { grid-template-columns: 1fr 1fr; gap: 2rem; }
-    .process-steps::before { display: none; }
-
-    .form-row { grid-template-columns: 1fr; }
-
-    .hero-stats { gap: 2rem; }
-  }
-
-  /* ===== SCROLL ANIMATIONS ===== */
-  .fade-up {
-    opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
-  }
-
-  .fade-up.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  .stagger > * {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-  }
-
-  .stagger.visible > *:nth-child(1) { opacity: 1; transform: translateY(0); transition-delay: 0s; }
-  .stagger.visible > *:nth-child(2) { opacity: 1; transform: translateY(0); transition-delay: 0.1s; }
-  .stagger.visible > *:nth-child(3) { opacity: 1; transform: translateY(0); transition-delay: 0.2s; }
-  .stagger.visible > *:nth-child(4) { opacity: 1; transform: translateY(0); transition-delay: 0.3s; }
-  .stagger.visible > *:nth-child(5) { opacity: 1; transform: translateY(0); transition-delay: 0.4s; }
-  .stagger.visible > *:nth-child(6) { opacity: 1; transform: translateY(0); transition-delay: 0.5s; }
-  .stagger.visible > *:nth-child(7) { opacity: 1; transform: translateY(0); transition-delay: 0.6s; }
-  .stagger.visible > *:nth-child(8) { opacity: 1; transform: translateY(0); transition-delay: 0.7s; }
-  .stagger.visible > *:nth-child(9) { opacity: 1; transform: translateY(0); transition-delay: 0.8s; }
+/* ─── RESET ─────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+/* ─── TOKENS ─────────────────────────── */
+:root {
+  /* Backgrounds */
+  --bg:       #ffffff;
+  --bg-soft:  #f5f7fc;
+  --bg-tint:  #eef2fb;
+  --dark:     #060d1c;
+  --dark-2:   #091121;
+
+  /* Accent – kept from brand, slightly punchier */
+  --accent:    #2c6ee8;
+  --accent-hi: #4d8ef5;
+  --accent-lo: rgba(44,110,232,0.09);
+  --accent-glow: rgba(44,110,232,0.18);
+
+  /* Text */
+  --ink:    #0b1120;
+  --ink-2:  #4a5568;
+  --ink-3:  #94a3b8;
+  --on-dark: #c8d8f0;
+  --on-dark-2: #607a99;
+
+  /* Lines */
+  --line:     rgba(0,0,0,0.08);
+  --line-dark: rgba(255,255,255,0.07);
+
+  /* Fonts */
+  --display: 'Bricolage Grotesque', sans-serif;
+  --body:    'Plus Jakarta Sans', sans-serif;
+  --mono:    'DM Mono', monospace;
+
+  /* Motion */
+  --spring: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease:   cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 16px;
+  line-height: 1.7;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── NAV ─────────────────────────────── */
+nav {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 300;
+  height: 62px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 clamp(1.25rem, 4vw, 3.5rem);
+  transition: background 0.5s var(--ease), border-color 0.5s var(--ease), box-shadow 0.5s var(--ease);
+  border-bottom: 1px solid transparent;
+}
+/* Over hero = dark nav */
+nav.over-hero { color: #fff; }
+nav.scrolled {
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-color: var(--line);
+  box-shadow: 0 1px 0 var(--line);
+}
+nav.over-hero.scrolled {
+  background: rgba(6,13,28,0.88);
+  border-color: var(--line-dark);
+  box-shadow: 0 1px 0 var(--line-dark);
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: inherit;
+  letter-spacing: -0.02em;
+  transition: color 0.3s;
+}
+.nav-logo-mark {
+  width: 30px; height: 30px;
+  background: var(--accent);
+  border-radius: 7px;
+  display: grid;
+  place-items: center;
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: #fff;
+  flex-shrink: 0;
+  font-family: var(--mono);
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2.25rem;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: var(--ink-2);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+nav.over-hero:not(.scrolled) .nav-links a { color: var(--on-dark); }
+.nav-links a:hover { color: var(--ink); }
+nav.over-hero:not(.scrolled) .nav-links a:hover { color: #fff; }
+
+.nav-cta {
+  background: var(--accent);
+  color: #fff !important;
+  padding: 0.45rem 1.1rem;
+  border-radius: 6px;
+  font-size: 0.85rem !important;
+  font-weight: 500 !important;
+  transition: background 0.2s, transform 0.15s !important;
+  text-decoration: none;
+}
+.nav-cta:hover { background: var(--accent-hi); transform: translateY(-1px); }
+
+/* ─── HERO (dark) ─────────────────────── */
+#home {
+  min-height: 100vh;
+  background: var(--dark);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 9rem clamp(1.5rem, 5vw, 4rem) 7rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Radial glow */
+.hero-aura {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 90% 70% at 50% -10%, rgba(44,110,232,0.22) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 50% at 80% 90%, rgba(44,110,232,0.08) 0%, transparent 55%);
+  pointer-events: none;
+}
+/* Subtle dot grid */
+.hero-dots {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255,255,255,0.07) 1px, transparent 1px);
+  background-size: 32px 32px;
+  pointer-events: none;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black, transparent);
+  -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black, transparent);
+}
+
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  color: var(--accent-hi);
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 1;
+}
+.hero-eyebrow span {
+  width: 6px; height: 6px;
+  background: var(--accent-hi);
+  border-radius: 50%;
+  animation: blink 2.4s ease-in-out infinite;
+}
+@keyframes blink {
+  0%,100% { opacity:1; } 50% { opacity:0.3; }
+}
+
+.hero-title {
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: clamp(3rem, 7.5vw, 6.5rem);
+  line-height: 1.0;
+  letter-spacing: -0.04em;
+  color: #fff;
+  max-width: 900px;
+  position: relative;
+  z-index: 1;
+  margin-bottom: 1.5rem;
+}
+.hero-title .word-accent { color: var(--accent-hi); }
+.hero-title .word-light {
+  font-weight: 400;
+  color: rgba(255,255,255,0.45);
+}
+
+.hero-sub {
+  font-size: clamp(1rem, 1.8vw, 1.2rem);
+  color: var(--on-dark);
+  max-width: 52ch;
+  line-height: 1.7;
+  font-weight: 300;
+  margin: 0 auto 2.75rem;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+  margin-bottom: 5rem;
+}
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+  padding: 0.85rem 1.9rem;
+  border-radius: 7px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.925rem;
+  transition: background 0.2s, transform 0.2s var(--spring), box-shadow 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+.btn-primary:hover {
+  background: var(--accent-hi);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(44,110,232,0.38);
+}
+.btn-outline-white {
+  background: transparent;
+  color: rgba(255,255,255,0.8);
+  padding: 0.85rem 1.9rem;
+  border-radius: 7px;
+  border: 1px solid rgba(255,255,255,0.18);
+  text-decoration: none;
+  font-weight: 400;
+  font-size: 0.925rem;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+.btn-outline-white:hover {
+  border-color: rgba(255,255,255,0.42);
+  color: #fff;
+  background: rgba(255,255,255,0.06);
+}
+/* Light outline for light-bg CTA */
+.btn-outline {
+  background: transparent;
+  color: var(--ink-2);
+  padding: 0.85rem 1.9rem;
+  border-radius: 7px;
+  border: 1px solid var(--line-hi, rgba(0,0,0,0.14));
+  text-decoration: none;
+  font-weight: 400;
+  font-size: 0.925rem;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+.btn-outline:hover {
+  border-color: rgba(0,0,0,0.28);
+  color: var(--ink);
+  background: rgba(0,0,0,0.03);
+}
+
+/* Scrolling stat bar inside hero */
+.hero-stat-row {
+  display: flex;
+  justify-content: center;
+  gap: clamp(2rem, 5vw, 5rem);
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+  padding-top: 3.5rem;
+  border-top: 1px solid var(--line-dark);
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+}
+.hero-stat { text-align: center; }
+.hero-stat-n {
+  font-family: var(--display);
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+.hero-stat-n em { font-style: normal; color: var(--accent-hi); }
+.hero-stat-l {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  color: var(--on-dark-2);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+
+/* Section divider */
+.section-bridge { display: none; }
+
+/* ─── MARQUEE ─────────────────────────── */
+.marquee-wrap {
+  background: var(--bg);
+  overflow: hidden;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: scroll-left 40s linear infinite;
+}
+.marquee-track:hover { animation-play-state: paused; }
+.marquee-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 0.85rem 1.75rem;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  white-space: nowrap;
+}
+.marquee-item .sep {
+  width: 4px; height: 4px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+}
+@keyframes scroll-left {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ─── SHARED SECTION ─────────────────── */
+.section {
+  padding: clamp(5rem, 9vw, 8rem) clamp(1.5rem, 5vw, 4rem);
+}
+.wrap { max-width: 1140px; margin: 0 auto; }
+
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 1rem;
+}
+.eyebrow::before {
+  content: '';
+  width: 16px; height: 1.5px;
+  background: var(--accent);
+  display: block;
+}
+.eyebrow.on-dark { color: var(--accent-hi); }
+.eyebrow.on-dark::before { background: var(--accent-hi); }
+
+.h2 {
+  font-family: var(--display);
+  font-size: clamp(1.9rem, 3.5vw, 2.8rem);
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+}
+.h2.on-dark { color: #fff; }
+
+.body-lg {
+  font-size: 1rem;
+  color: var(--ink-2);
+  line-height: 1.75;
+  font-weight: 300;
+  max-width: 52ch;
+}
+.body-lg.on-dark { color: var(--on-dark); }
+
+/* ─── SERVICES ───────────────────────── */
+#services { background: var(--bg); }
+
+.services-top {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: end;
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 0;
+}
+
+.service-row {
+  display: grid;
+  grid-template-columns: 52px 1fr 28px;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.5rem 0.75rem;
+  border-bottom: 1px solid var(--line);
+  border-radius: 6px;
+  margin: 0 -0.75rem;
+  position: relative;
+  cursor: default;
+  transition:
+    background 0.3s var(--spring),
+    padding-left 0.3s var(--spring);
+}
+.service-row::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 10%; bottom: 10%;
+  width: 2.5px;
+  border-radius: 2px;
+  background: var(--accent);
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+.service-row:hover { background: var(--bg-soft); padding-left: 1.25rem; }
+.service-row:hover::before { opacity: 1; }
+
+.svc-n {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  color: var(--ink-3);
+  letter-spacing: 0.06em;
+  transition: color 0.25s;
+}
+.service-row:hover .svc-n { color: var(--accent); }
+.svc-body h3 {
+  font-family: var(--display);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+  margin-bottom: 0.15rem;
+  transition: color 0.25s;
+}
+.service-row:hover .svc-body h3 { color: var(--accent); }
+.svc-body p {
+  font-size: 0.83rem;
+  color: var(--ink-3);
+  font-weight: 300;
+  line-height: 1.5;
+  transition: color 0.25s;
+}
+.service-row:hover .svc-body p { color: var(--ink-2); }
+.svc-arrow {
+  color: var(--ink-3);
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity 0.25s, transform 0.25s var(--spring), color 0.25s;
+}
+.service-row:hover .svc-arrow { opacity: 1; transform: translateX(0); color: var(--accent); }
+
+/* ─── METRICS / WHY ──────────────────── */
+#why { background: var(--bg-soft); }
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 5rem;
+}
+.metric-card {
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 2.25rem 2rem;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.4s var(--spring), box-shadow 0.4s var(--spring);
+}
+.metric-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(44,110,232,0.1);
+}
+.metric-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 1px solid transparent;
+  background: linear-gradient(135deg, rgba(44,110,232,0.15), transparent) border-box;
+  -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.metric-card:hover::after { opacity: 1; }
+.metric-label {
+  font-family: var(--mono);
+  font-size: 0.67rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-bottom: 0.75rem;
+}
+.metric-num {
+  font-family: var(--display);
+  font-size: clamp(2.5rem, 4.5vw, 3.75rem);
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  color: var(--ink);
+  line-height: 1;
+  margin-bottom: 0.75rem;
+}
+.metric-num .acc { color: var(--accent); }
+.metric-desc {
+  font-size: 0.875rem;
+  color: var(--ink-2);
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+.why-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+.why-statement {
+  font-family: var(--display);
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.025em;
+}
+.why-statement em { font-style: normal; color: var(--accent); }
+
+.why-checklist {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+.why-checklist li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  font-size: 0.9rem;
+  color: var(--ink-2);
+  font-weight: 300;
+  line-height: 1.6;
+}
+.why-check {
+  flex-shrink: 0;
+  margin-top: 2px;
+  width: 18px; height: 18px;
+  border-radius: 5px;
+  background: var(--accent-lo);
+  border: 1.5px solid var(--accent);
+  display: grid;
+  place-items: center;
+}
+.why-check svg { width: 10px; height: 10px; color: var(--accent); }
+
+/* ─── PROCESS ────────────────────────── */
+#process { background: var(--bg); }
+
+.process-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: end;
+  margin-bottom: 4rem;
+}
+.process-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+}
+.process-card {
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 2rem 1.75rem;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.4s var(--spring), box-shadow 0.35s;
+}
+.process-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.07);
+}
+.process-num-bg {
+  font-family: var(--display);
+  font-size: 4rem;
+  font-weight: 800;
+  color: var(--accent);
+  letter-spacing: -0.05em;
+  line-height: 1;
+  margin-bottom: 1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  background: var(--accent-lo);
+  border: 2px solid rgba(44,110,232,0.18);
+  border-radius: 14px;
+  font-size: 1.6rem;
+  transition: background 0.25s, border-color 0.25s, transform 0.3s var(--spring);
+}
+.process-card:hover .process-num-bg {
+  background: rgba(44,110,232,0.14);
+  border-color: rgba(44,110,232,0.32);
+  transform: scale(1.08);
+}
+.step-tag {
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.35rem;
+  display: block;
+}
+.process-card h3 {
+  font-family: var(--display);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.01em;
+}
+.process-card p {
+  font-size: 0.83rem;
+  color: var(--ink-2);
+  line-height: 1.65;
+  font-weight: 300;
+}
+
+/* ─── ABOUT (light section) ───────────── */
+#about {
+  background: var(--bg-soft);
+  padding: clamp(5rem, 9vw, 8rem) clamp(1.5rem, 5vw, 4rem);
+}
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: center;
+  max-width: 1140px;
+  margin: 0 auto;
+}
+.about-quote {
+  font-family: var(--display);
+  font-size: clamp(1.4rem, 2.4vw, 1.9rem);
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.03em;
+  border-left: 3px solid var(--accent);
+  padding-left: 1.75rem;
+  margin-bottom: 2rem;
+}
+.about-quote em { font-style: normal; color: var(--accent); }
+.about-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.about-pill {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.07em;
+  color: var(--ink-2);
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  padding: 0.3rem 0.7rem;
+}
+
+.about-text .body-lg { margin-top: 1rem; margin-bottom: 1.75rem; }
+.about-mission {
+  background: var(--accent-lo);
+  border: 1px solid rgba(44,110,232,0.15);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 8px 8px 0;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 2rem;
+}
+.about-mission p {
+  font-size: 0.875rem;
+  color: var(--ink-2);
+  line-height: 1.75;
+  font-style: italic;
+  font-weight: 300;
+}
+
+.btn-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border-bottom: 1px solid rgba(44,110,232,0.3);
+  padding-bottom: 2px;
+  transition: color 0.2s, border-color 0.2s;
+}
+.btn-link:hover { color: var(--accent-hi); border-color: var(--accent-hi); }
+
+/* ─── CONTACT ────────────────────────── */
+#contact { background: var(--bg-soft); }
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: start;
+}
+.contact-left .h2 { margin-bottom: 1rem; }
+.contact-left .body-lg { margin-bottom: 2rem; }
+
+.contact-list { display: flex; flex-direction: column; }
+.contact-row {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 1.1rem 0;
+  border-bottom: 1px solid var(--line);
+}
+.contact-row:first-child { border-top: 1px solid var(--line); }
+.contact-tag {
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  width: 64px;
+  flex-shrink: 0;
+}
+.contact-val {
+  font-size: 0.9rem;
+  color: var(--ink-2);
+  font-weight: 300;
+}
+.contact-val a {
+  color: var(--ink);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.contact-val a:hover { color: var(--accent); }
+
+/* Form */
+.form-card {
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 2.5rem;
+  box-shadow: 0 4px 32px rgba(0,0,0,0.05);
+}
+.form-title {
+  font-family: var(--display);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+  margin-bottom: 0.25rem;
+}
+.form-hint {
+  font-size: 0.82rem;
+  color: var(--ink-3);
+  margin-bottom: 1.75rem;
+}
+.form-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 0.85rem; }
+.form-group { margin-bottom: 0.85rem; }
+.form-group label {
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-bottom: 0.4rem;
+}
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  padding: 0.72rem 1rem;
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 0.9rem;
+  font-weight: 300;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.form-group input::placeholder,
+.form-group textarea::placeholder { color: var(--ink-3); }
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(44,110,232,0.1);
+  background: var(--bg);
+}
+.form-group textarea { resize: vertical; min-height: 100px; }
+.btn-submit {
+  width: 100%;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  padding: 0.9rem;
+  font-family: var(--body);
+  font-size: 0.925rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s var(--spring), box-shadow 0.2s;
+  margin-top: 0.25rem;
+}
+.btn-submit:hover {
+  background: var(--accent-hi);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(44,110,232,0.3);
+}
+.form-note {
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  color: var(--ink-3);
+  text-align: center;
+  margin-top: 0.75rem;
+  letter-spacing: 0.04em;
+}
+#form-success {
+  display: none;
+  text-align: center;
+  padding: 2rem 1rem;
+}
+#form-success .s-icon {
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  background: var(--accent-lo);
+  border: 1px solid rgba(44,110,232,0.25);
+  display: grid;
+  place-items: center;
+  margin: 0 auto 1.25rem;
+  font-size: 1.2rem;
+}
+#form-success h3 {
+  font-family: var(--display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
+}
+#form-success p {
+  font-size: 0.875rem;
+  color: var(--ink-2);
+  line-height: 1.65;
+}
+#form-success p strong { color: var(--accent); }
+#form-error {
+  display: none;
+  background: rgba(239,68,68,0.07);
+  border: 1px solid rgba(239,68,68,0.2);
+  border-radius: 6px;
+  padding: 0.65rem 0.9rem;
+  font-size: 0.82rem;
+  color: #dc2626;
+  margin-bottom: 1rem;
+}
+
+/* ─── CTA BANNER ─────────────────────── */
+#cta {
+  background: var(--bg-tint);
+  border-top: 1px solid var(--line);
+  padding: clamp(5rem, 9vw, 8rem) clamp(1.5rem, 5vw, 4rem);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+#cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(44,110,232,0.07) 0%, transparent 65%);
+  pointer-events: none;
+}
+.cta-label { color: var(--accent); }
+.cta-title {
+  font-family: var(--display);
+  font-size: clamp(2rem, 4.5vw, 3.5rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  color: var(--ink);
+  line-height: 1.08;
+  max-width: 18ch;
+  margin: 0 auto 1.25rem;
+  position: relative;
+}
+.cta-title em { font-style: normal; color: var(--accent); }
+.cta-sub {
+  font-size: 1rem;
+  color: var(--ink-2);
+  max-width: 44ch;
+  margin: 0 auto 2.5rem;
+  font-weight: 300;
+  line-height: 1.7;
+  position: relative;
+}
+.cta-btns {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+/* ─── FOOTER ─────────────────────────── */
+footer {
+  background: var(--ink);
+  border-top: 1px solid var(--line-dark);
+  padding: 2.25rem clamp(1.5rem, 5vw, 4rem);
+}
+.footer-inner {
+  max-width: 1140px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  text-decoration: none;
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.7);
+  letter-spacing: -0.02em;
+}
+.footer-copy {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  color: var(--on-dark-2);
+  letter-spacing: 0.05em;
+  margin-top: 3px;
+}
+.footer-nav {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+.footer-nav a {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  color: var(--on-dark-2);
+  text-decoration: none;
+  letter-spacing: 0.07em;
+  transition: color 0.2s;
+}
+.footer-nav a:hover { color: var(--on-dark); }
+
+/* ─── SCROLL ANIMATIONS ──────────────── */
+.anim {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.75s var(--spring),
+    transform 0.75s var(--spring);
+}
+.anim.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+.anim-d1 { transition-delay: 0.08s; }
+.anim-d2 { transition-delay: 0.16s; }
+.anim-d3 { transition-delay: 0.24s; }
+.anim-d4 { transition-delay: 0.32s; }
+.anim-scale {
+  opacity: 0;
+  transform: scale(0.96) translateY(16px);
+  transition: opacity 0.7s var(--spring), transform 0.7s var(--spring);
+}
+.anim-scale.in { opacity: 1; transform: scale(1) translateY(0); }
+
+/* ─── RESPONSIVE ─────────────────────── */
+@media (max-width: 1024px) {
+  .services-top  { grid-template-columns: 1fr; }
+  .metrics-grid  { grid-template-columns: 1fr 1fr; }
+  .why-split     { grid-template-columns: 1fr; gap: 3rem; }
+  .process-header { grid-template-columns: 1fr; gap: 1.5rem; }
+  .process-cards { grid-template-columns: 1fr 1fr; }
+  .about-grid    { grid-template-columns: 1fr; gap: 3rem; }
+  .contact-grid  { grid-template-columns: 1fr; gap: 3rem; }
+}
+@media (max-width: 640px) {
+  .nav-links { display: none; }
+  .hero-title { font-size: clamp(2.5rem, 10vw, 4rem); }
+  .metrics-grid  { grid-template-columns: 1fr; }
+  .process-cards { grid-template-columns: 1fr; }
+  .form-2col     { grid-template-columns: 1fr; }
+  .hero-stat-row { gap: 1.5rem; }
+  .section-bridge { height: 48px; }
+}
 </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav>
-  <a href="#home" class="logo">
-    <div class="logo-mark">VS</div>
-    Valora <span>Systems</span>
+<!-- ─── NAV ─────────────────────────── -->
+<nav id="nav" class="over-dark">
+  <a href="#home" class="nav-logo">
+    <div class="nav-logo-mark">VS</div>
+    Valora Systems
   </a>
   <ul class="nav-links">
     <li><a href="#services">Services</a></li>
@@ -1024,273 +1053,330 @@
   </ul>
 </nav>
 
-<!-- HERO -->
+<!-- ─── HERO ─────────────────────────── -->
 <section id="home">
-  <div class="hero-bg"></div>
-  <div class="hero-grid"></div>
+  <div class="hero-aura" aria-hidden="true"></div>
+  <div class="hero-dots" aria-hidden="true"></div>
 
-  <div class="hero-badge">
-    <span class="badge-dot"></span>
-    Bay Area's Small Business AI Partner
-  </div>
-
-  <h1>
-    AI Made <span class="gradient-text">Simple</span><br/>for Small Business
-  </h1>
-
-  <p class="hero-sub">
-    We help organizations automate repetitive work, improve customer experiences, and unlock the power of AI — no technical expertise required.
+  <p class="hero-eyebrow anim">
+    <span></span>
+    Bay Area · AI Consulting · Small Business
   </p>
 
-  <div class="hero-buttons">
+  <h1 class="hero-title anim anim-d1">
+    We make <span class="word-accent">AI</span><br>
+    work <span class="word-light">for you</span>
+  </h1>
+
+  <p class="hero-sub anim anim-d2">
+    Automate the repetitive, improve every customer interaction, and unlock AI's full potential — without needing a tech team.
+  </p>
+
+  <div class="hero-actions anim anim-d3">
     <a href="#contact" class="btn-primary">
-      📅 Book a Free Consultation
+      Book a Free Consultation
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+        <path d="M2.5 7h9M8 4l3.5 3L8 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
     </a>
-    <a href="#services" class="btn-secondary">
-      Explore Services →
-    </a>
+    <a href="#services" class="btn-outline-white">Explore Services</a>
   </div>
 
-  <p class="hero-tagline">AI — Accessible, Intuitive, and Built for Your Business</p>
-
-  <div class="hero-stats">
+  <div class="hero-stat-row anim anim-d4">
     <div class="hero-stat">
-      <div class="hero-stat-num">9+</div>
-      <div class="hero-stat-label">AI Solutions</div>
+      <div class="hero-stat-n"><em>9</em>+</div>
+      <div class="hero-stat-l">AI Services</div>
     </div>
     <div class="hero-stat">
-      <div class="hero-stat-num">24/7</div>
-      <div class="hero-stat-label">Automated Support</div>
+      <div class="hero-stat-n">24<em>/7</em></div>
+      <div class="hero-stat-l">Automated</div>
     </div>
     <div class="hero-stat">
-      <div class="hero-stat-num">0</div>
-      <div class="hero-stat-label">Tech Expertise Needed</div>
+      <div class="hero-stat-n"><em>Zero</em></div>
+      <div class="hero-stat-l">Tech Skills Needed</div>
     </div>
   </div>
 </section>
 
-<div class="divider"></div>
 
-<!-- SERVICES -->
-<section id="services">
-  <div class="container">
-    <div class="services-header fade-up">
-      <p class="section-label">What We Do</p>
-      <h2 class="section-title">AI tools that work as hard as you do</h2>
-      <p class="section-sub">From chatbots to full workflow automation — we build and deploy the right AI solutions for your business goals.</p>
+<!-- ─── MARQUEE ───────────────────────── -->
+<div class="marquee-wrap">
+  <div class="marquee-track" aria-hidden="true">
+    <span class="marquee-item">AI Chatbots <span class="sep"></span></span>
+    <span class="marquee-item">Customer Support Agents <span class="sep"></span></span>
+    <span class="marquee-item">Voice AI <span class="sep"></span></span>
+    <span class="marquee-item">Appointment Scheduling <span class="sep"></span></span>
+    <span class="marquee-item">Lead Qualification <span class="sep"></span></span>
+    <span class="marquee-item">Workflow Automation <span class="sep"></span></span>
+    <span class="marquee-item">Employee Training <span class="sep"></span></span>
+    <span class="marquee-item">AI Strategy <span class="sep"></span></span>
+    <span class="marquee-item">Custom AI Systems <span class="sep"></span></span>
+    <span class="marquee-item">AI Chatbots <span class="sep"></span></span>
+    <span class="marquee-item">Customer Support Agents <span class="sep"></span></span>
+    <span class="marquee-item">Voice AI <span class="sep"></span></span>
+    <span class="marquee-item">Appointment Scheduling <span class="sep"></span></span>
+    <span class="marquee-item">Lead Qualification <span class="sep"></span></span>
+    <span class="marquee-item">Workflow Automation <span class="sep"></span></span>
+    <span class="marquee-item">Employee Training <span class="sep"></span></span>
+    <span class="marquee-item">AI Strategy <span class="sep"></span></span>
+    <span class="marquee-item">Custom AI Systems <span class="sep"></span></span>
+  </div>
+</div>
+
+<!-- ─── SERVICES ─────────────────────── -->
+<section id="services" class="section">
+  <div class="wrap">
+    <div class="services-top">
+      <div class="anim">
+        <p class="eyebrow">What We Do</p>
+        <h2 class="h2">AI tools built<br>for your goals</h2>
+      </div>
+      <p class="body-lg anim anim-d1">From chatbots to full workflow automation — we build and deploy the right AI solutions, end-to-end. No DIY required.</p>
     </div>
 
-    <div class="services-grid stagger">
-      <div class="service-card">
-        <div class="service-icon">💬</div>
-        <h3>AI Chatbots for Websites</h3>
-        <p>Engage visitors instantly with intelligent chatbots that answer questions, qualify leads, and convert — around the clock.</p>
+    <div role="list">
+      <div class="service-row anim" role="listitem">
+        <span class="svc-n">01</span>
+        <div class="svc-body">
+          <h3>AI Chatbots for Websites</h3>
+          <p>Engage visitors instantly — answer questions, qualify leads, and convert around the clock.</p>
+        </div>
+        <svg class="svc-arrow" width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M3 9h12M11 5l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </div>
-      <div class="service-card">
-        <div class="service-icon">🎧</div>
-        <h3>AI Customer Support Agents</h3>
-        <p>Deliver fast, consistent, and empathetic support at scale. Handle common queries automatically so your team focuses on what matters.</p>
+      <div class="service-row anim anim-d1" role="listitem">
+        <span class="svc-n">02</span>
+        <div class="svc-body">
+          <h3>AI Customer Support Agents</h3>
+          <p>Handle common queries automatically so your team focuses on what matters most.</p>
+        </div>
+        <svg class="svc-arrow" width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M3 9h12M11 5l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </div>
-      <div class="service-card">
-        <div class="service-icon">🎙️</div>
-        <h3>AI Voice Agents</h3>
-        <p>Conversational phone and voice AI that sounds human, handles bookings, answers FAQs, and escalates intelligently.</p>
+      <div class="service-row anim anim-d2" role="listitem">
+        <span class="svc-n">03</span>
+        <div class="svc-body">
+          <h3>AI Voice Agents</h3>
+          <p>Human-sounding voice AI that handles bookings, FAQs, and smart escalations.</p>
+        </div>
+        <svg class="svc-arrow" width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M3 9h12M11 5l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </div>
-      <div class="service-card">
-        <div class="service-icon">📆</div>
-        <h3>AI Appointment Scheduling</h3>
-        <p>Eliminate back-and-forth. AI handles scheduling, confirmations, reminders, and rescheduling automatically.</p>
+      <div class="service-row anim" role="listitem">
+        <span class="svc-n">04</span>
+        <div class="svc-body">
+          <h3>AI Appointment Scheduling</h3>
+          <p>Eliminate back-and-forth — confirmations, reminders, and rescheduling on autopilot.</p>
+        </div>
+        <svg class="svc-arrow" width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M3 9h12M11 5l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </div>
-      <div class="service-card">
-        <div class="service-icon">🎯</div>
-        <h3>AI Lead Qualification</h3>
-        <p>Let AI score, sort, and prioritize your inbound leads so your sales team only talks to the right prospects at the right time.</p>
+      <div class="service-row anim anim-d1" role="listitem">
+        <span class="svc-n">05</span>
+        <div class="svc-body">
+          <h3>AI Lead Qualification</h3>
+          <p>Score, sort, and prioritize inbound leads so your team only talks to the right prospects.</p>
+        </div>
+        <svg class="svc-arrow" width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M3 9h12M11 5l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </div>
-      <div class="service-card">
-        <div class="service-icon">⚙️</div>
-        <h3>AI Workflow Automation</h3>
-        <p>Identify and eliminate repetitive manual tasks. Connect your tools and automate multi-step processes with zero code.</p>
+      <div class="service-row anim anim-d2" role="listitem">
+        <span class="svc-n">06</span>
+        <div class="svc-body">
+          <h3>AI Workflow Automation</h3>
+          <p>Connect your tools and eliminate repetitive manual tasks with zero code required.</p>
+        </div>
+        <svg class="svc-arrow" width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M3 9h12M11 5l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </div>
-      <div class="service-card">
-        <div class="service-icon">🎓</div>
-        <h3>AI Employee Training &amp; Education</h3>
-        <p>Onboard faster and upskill continuously with interactive AI training programs personalized to each team member's role.</p>
+      <div class="service-row anim" role="listitem">
+        <span class="svc-n">07</span>
+        <div class="svc-body">
+          <h3>AI Employee Training &amp; Education</h3>
+          <p>Onboard faster and upskill continuously with personalized AI-driven training programs.</p>
+        </div>
+        <svg class="svc-arrow" width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M3 9h12M11 5l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </div>
-      <div class="service-card">
-        <div class="service-icon">🧭</div>
-        <h3>AI Consulting &amp; Strategy</h3>
-        <p>Not sure where to start? We audit your business, identify the highest-impact opportunities, and build a clear AI roadmap.</p>
+      <div class="service-row anim anim-d1" role="listitem">
+        <span class="svc-n">08</span>
+        <div class="svc-body">
+          <h3>AI Consulting &amp; Strategy</h3>
+          <p>Not sure where to start? We audit your business and build a clear, high-ROI AI roadmap.</p>
+        </div>
+        <svg class="svc-arrow" width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M3 9h12M11 5l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </div>
-      <div class="service-card">
-        <div class="service-icon">✨</div>
-        <h3>Custom AI Solutions</h3>
-        <p>Need something unique? We design and build bespoke AI systems tailored precisely to your workflows, data, and goals.</p>
+      <div class="service-row anim anim-d2" role="listitem">
+        <span class="svc-n">09</span>
+        <div class="svc-body">
+          <h3>Custom AI Solutions</h3>
+          <p>Need something unique? We design bespoke AI systems tailored to your workflows and data.</p>
+        </div>
+        <svg class="svc-arrow" width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M3 9h12M11 5l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </div>
     </div>
   </div>
 </section>
 
-<div class="divider"></div>
+<!-- Bridge: light → soft -->
 
-<!-- WHY VALORA -->
-<section id="why">
-  <div class="why-bg"></div>
-  <div class="container">
-    <div class="why-layout">
-      <div class="why-text fade-up">
-        <p class="section-label">Why Valora Systems</p>
-        <h2 class="section-title">Technology that feels human</h2>
-        <p class="section-sub">We believe AI should be as easy to use as your favorite app. Our approach puts people first — we handle the complexity so you can focus on growing your business.</p>
-        <br/>
-        <a href="#contact" class="btn-primary" style="display:inline-flex;width:fit-content;">Get Started Today →</a>
+<!-- ─── WHY / METRICS ─────────────────── -->
+<section id="why" class="section" style="background:var(--bg-soft);">
+  <div class="wrap">
+    <div class="anim" style="margin-bottom:3rem;">
+      <p class="eyebrow">Why Valora Systems</p>
+      <h2 class="h2">Results you can<br>actually measure</h2>
+    </div>
+
+    <div class="metrics-grid">
+      <div class="metric-card anim-scale">
+        <div class="metric-label">Service Lines</div>
+        <div class="metric-num"><span class="acc" data-count="9">0</span>+</div>
+        <p class="metric-desc">A full spectrum of AI capabilities — one trusted partner for everything your business needs.</p>
       </div>
-      <div class="why-cards stagger">
-        <div class="why-card">
-          <div class="why-card-icon">🤝</div>
-          <h4>Human-Centered Support</h4>
-          <p>We're with you every step of the way — from first conversation to full deployment and beyond.</p>
+      <div class="metric-card anim-scale anim-d1">
+        <div class="metric-label">Automated Coverage</div>
+        <div class="metric-num">24<span class="acc">/7</span></div>
+        <p class="metric-desc">Your AI systems never clock out. Customer queries and tasks handled around the clock, automatically.</p>
+      </div>
+      <div class="metric-card anim-scale anim-d2">
+        <div class="metric-label">Tech Expertise Required</div>
+        <div class="metric-num"><span class="acc">Zero</span></div>
+        <p class="metric-desc">We handle all setup, integration, and maintenance. You just see the results.</p>
+      </div>
+    </div>
+
+    <div class="why-split">
+      <div class="why-statement anim">
+        We believe <em>AI should feel like a natural extension</em> of your team — not a complicated tool to manage.
+        <div style="margin-top:2rem;">
+          <a href="#contact" class="btn-primary">Get Started Today →</a>
         </div>
-        <div class="why-card">
-          <div class="why-card-icon">⚡</div>
-          <h4>Easy Implementation</h4>
-          <p>We handle setup end-to-end. Your team gets simple tools that just work, no training required.</p>
-        </div>
-        <div class="why-card">
-          <div class="why-card-icon">🏪</div>
-          <h4>Small Business Focus</h4>
-          <p>Built for businesses like yours — solutions sized right, priced right, and designed to scale.</p>
-        </div>
-        <div class="why-card">
-          <div class="why-card-icon">📈</div>
-          <h4>Measurable Results</h4>
-          <p>Every solution we deploy is tied to real outcomes: time saved, leads captured, costs reduced.</p>
-        </div>
+      </div>
+      <div class="anim anim-d1">
+        <ul class="why-checklist">
+          <li>
+            <span class="why-check"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5 3.5-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            Human-centered support from first call to full deployment
+          </li>
+          <li>
+            <span class="why-check"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5 3.5-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            End-to-end implementation — we handle everything
+          </li>
+          <li>
+            <span class="why-check"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5 3.5-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            Built for small businesses — sized right, priced right, designed to scale
+          </li>
+          <li>
+            <span class="why-check"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5 3.5-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            Every solution tied to measurable outcomes: time saved, leads captured, costs reduced
+          </li>
+          <li>
+            <span class="why-check"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5 3.5-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            No jargon, no overwhelm — plain English the whole way
+          </li>
+        </ul>
       </div>
     </div>
   </div>
 </section>
 
-<div class="divider"></div>
+<!-- Bridge: soft → light -->
 
-<!-- PROCESS -->
-<section id="process">
-  <div class="container">
-    <div class="process-header fade-up">
-      <p class="section-label">How It Works</p>
-      <h2 class="section-title">From conversation to transformation</h2>
-      <p class="section-sub">A clear, guided process designed to get you results fast — without the overwhelm.</p>
+<!-- ─── PROCESS ────────────────────────── -->
+<section id="process" class="section">
+  <div class="wrap">
+    <div class="process-header">
+      <div class="anim">
+        <p class="eyebrow">How It Works</p>
+        <h2 class="h2">From conversation<br>to transformation</h2>
+      </div>
+      <p class="body-lg anim anim-d1">A clear, guided process designed to get you results fast — without the overwhelm or tech headaches.</p>
     </div>
-
-    <div class="process-steps stagger">
-      <div class="process-step">
-        <div class="process-num">01</div>
+    <div class="process-cards">
+      <div class="process-card anim-scale">
+        <span class="process-num-bg">01</span>
+        <span class="step-tag">Step One</span>
         <h3>Discovery</h3>
         <p>We listen first. Deep-dive into your business, your challenges, and where AI can make the biggest impact.</p>
       </div>
-      <div class="process-step">
-        <div class="process-num">02</div>
+      <div class="process-card anim-scale anim-d1">
+        <span class="process-num-bg">02</span>
+        <span class="step-tag">Step Two</span>
         <h3>Strategy</h3>
         <p>We design a tailored AI roadmap with clear milestones, prioritized by ROI and ease of implementation.</p>
       </div>
-      <div class="process-step">
-        <div class="process-num">03</div>
-        <h3>Implementation</h3>
+      <div class="process-card anim-scale anim-d2">
+        <span class="process-num-bg">03</span>
+        <span class="step-tag">Step Three</span>
+        <h3>Build</h3>
         <p>Our team builds, tests, and deploys your AI solutions — fully integrated with your existing tools.</p>
       </div>
-      <div class="process-step">
-        <div class="process-num">04</div>
-        <h3>Optimization</h3>
-        <p>We monitor performance, gather feedback, and continuously improve so your AI gets smarter over time.</p>
+      <div class="process-card anim-scale anim-d3">
+        <span class="process-num-bg">04</span>
+        <span class="step-tag">Step Four</span>
+        <h3>Optimize</h3>
+        <p>We monitor performance and continuously improve so your AI gets smarter as your business grows.</p>
       </div>
     </div>
   </div>
 </section>
 
-<div class="divider"></div>
-
-<!-- ABOUT -->
+<!-- ─── ABOUT ──────────────────── -->
 <section id="about">
-  <div class="container">
-    <div class="about-layout">
-      <div class="about-visual fade-up">
-        <p class="about-visual-quote">"Making AI <span>accessible</span> to every business, not just the ones with a tech team."</p>
-        <div class="about-badges">
-          <span class="about-badge">Bay Area Based</span>
-          <span class="about-badge">Small Business Specialists</span>
-          <span class="about-badge">No Tech Jargon</span>
-          <span class="about-badge">Human Support</span>
-          <span class="about-badge">Fast Deployment</span>
-        </div>
+  <div class="about-grid">
+    <div class="anim">
+      <blockquote class="about-quote">
+        "Making AI <em>accessible</em> to every business — not just the ones with a tech team."
+      </blockquote>
+      <div class="about-pills">
+        <span class="about-pill">Bay Area Based</span>
+        <span class="about-pill">Small Business Specialists</span>
+        <span class="about-pill">No Tech Jargon</span>
+        <span class="about-pill">Human Support</span>
+        <span class="about-pill">Fast Deployment</span>
       </div>
-      <div class="about-text fade-up">
-        <p class="section-label">About Valora Systems</p>
-        <h2 class="section-title">AI for everyone — not just the enterprise</h2>
-        <p class="section-sub">Based in the Bay Area, Valora Systems was built on a simple belief: the transformative power of artificial intelligence shouldn't be limited to corporations with large IT departments.</p>
-        <div class="about-mission">
-          <p>Our mission is to make artificial intelligence accessible, understandable, and impactful for businesses of every size. We translate complex technology into plain-language solutions your entire team can embrace.</p>
-        </div>
-        <br/>
-        <a href="#contact" class="btn-secondary">Schedule a Free Call →</a>
+    </div>
+    <div class="anim anim-d1">
+      <p class="eyebrow">About Valora Systems</p>
+      <h2 class="h2">AI for everyone —<br>not just enterprise</h2>
+      <p class="body-lg" style="margin-top:1rem;margin-bottom:1.75rem;">Based in the Bay Area, Valora Systems was built on a simple belief: the transformative power of artificial intelligence shouldn't be limited to corporations with large IT departments.</p>
+      <div class="about-mission">
+        <p>Our mission is to make artificial intelligence accessible, understandable, and impactful for businesses of every size. We translate complex technology into plain-language solutions your entire team can embrace.</p>
       </div>
+      <a href="#contact" class="btn-link">Schedule a Free Call →</a>
     </div>
   </div>
 </section>
 
-<div class="divider"></div>
-
-<!-- CONTACT -->
-<section id="contact">
-  <div class="container">
-    <div class="contact-layout">
-      <div class="contact-info fade-up">
-        <p class="section-label">Get In Touch</p>
-        <h2 class="section-title">Let's build something great together</h2>
-        <p class="section-sub">Tell us about your business and what's holding you back. We'll show you exactly how AI can help — in plain English.</p>
-
-        <br/>
-        <div class="contact-item">
-          <div class="contact-item-icon">📍</div>
-          <div class="contact-item-text">
-            <h5>Location</h5>
-            <p>Bay Area, California</p>
+<!-- ─── CONTACT ────────────────────────── -->
+<section id="contact" class="section" style="background:var(--bg-soft);">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div class="contact-left anim">
+        <p class="eyebrow">Get In Touch</p>
+        <h2 class="h2">Let's build something great together</h2>
+        <p class="body-lg">Tell us about your business and what's holding you back. We'll show you exactly how AI can help — in plain English.</p>
+        <div class="contact-list">
+          <div class="contact-row">
+            <span class="contact-tag">Location</span>
+            <span class="contact-val">Bay Area, California</span>
           </div>
-        </div>
-        <div class="contact-item">
-          <div class="contact-item-icon">📧</div>
-          <div class="contact-item-text">
-            <h5>Email</h5>
-            <p>brian@valorasystems.ai</p>
+          <div class="contact-row">
+            <span class="contact-tag">Email</span>
+            <span class="contact-val"><a href="mailto:info@valorasystems.ai">info@valorasystems.ai</a></span>
           </div>
-        </div>
-        <div class="contact-item">
-          <div class="contact-item-icon">🕐</div>
-          <div class="contact-item-text">
-            <h5>Response Time</h5>
-            <p>We respond to all inquiries within 1 business day</p>
+          <div class="contact-row">
+            <span class="contact-tag">Response</span>
+            <span class="contact-val">Within 1 business day</span>
           </div>
         </div>
       </div>
 
-      <div class="contact-form-wrap fade-up">
-
-        <!-- Success message (hidden by default) -->
-        <div id="valora-success" style="display:none; text-align:center; padding: 3rem 2rem;">
-          <div style="font-size:3.5rem; margin-bottom:1.25rem;">🎉</div>
-          <h3 style="font-family:var(--font-display); font-size:1.5rem; color:var(--white); margin-bottom:0.75rem; letter-spacing:-0.02em;">Thank You for Reaching Out!</h3>
-          <p style="color:var(--text-secondary); font-size:0.95rem; line-height:1.7; max-width:320px; margin:0 auto;">We're excited to learn about your business. A member of our team will be in touch within <strong style="color:var(--accent-light);">1 business day</strong>.</p>
-
+      <div class="form-card anim anim-d1">
+        <div id="form-success">
+          <div class="s-icon">✦</div>
+          <h3>Thank You!</h3>
+          <p>We're excited to learn about your business. A member of our team will be in touch within <strong>1 business day</strong>.</p>
         </div>
-
-        <!-- Error message (hidden by default) -->
-        <div id="valora-error" style="display:none; background:rgba(239,68,68,0.1); border:1px solid rgba(239,68,68,0.3); border-radius:8px; padding:0.75rem 1rem; margin-bottom:1rem; color:#f87171; font-size:0.85rem;">
-          Something went wrong. Please try again or email us directly at brian@valorasystems.ai
-        </div>
-
-        <form id="valora-contact-form">
+        <div id="form-error">Something went wrong. Please email us at <a href="mailto:info@valorasystems.ai">info@valorasystems.ai</a></div>
+        <form id="contact-form" novalidate>
           <h3 class="form-title">Start Your AI Journey</h3>
-          <p class="form-sub">Fill out the form and we'll be in touch to set up your free consultation.</p>
-
-          <div class="form-row">
+          <p class="form-hint">Free consultation · No commitment required</p>
+          <div class="form-2col">
             <div class="form-group">
               <label for="fullname">Full Name *</label>
               <input type="text" id="fullname" name="fullname" placeholder="Jane Smith" required />
@@ -1300,8 +1386,7 @@
               <input type="text" id="business" name="business" placeholder="Acme Co." required />
             </div>
           </div>
-
-          <div class="form-row">
+          <div class="form-2col">
             <div class="form-group">
               <label for="email">Email Address *</label>
               <input type="email" id="email" name="email" placeholder="jane@acme.com" required />
@@ -1311,138 +1396,127 @@
               <input type="tel" id="phone" name="phone" placeholder="(415) 555-0100" />
             </div>
           </div>
-
           <div class="form-group">
-            <label for="message">How can we help you? *</label>
-            <textarea id="message" name="message" placeholder="Tell us about your business and what challenges you're facing with AI..." required></textarea>
+            <label for="message">How can we help? *</label>
+            <textarea id="message" name="message" placeholder="Tell us about your business and the challenges you're facing..." required></textarea>
           </div>
-
-          <button type="submit" class="btn-submit" id="valora-submit-btn">Send Message →</button>
+          <button type="submit" class="btn-submit" id="submit-btn">Send Message →</button>
           <p class="form-note">🔒 Your information is private and never shared.</p>
         </form>
-
-        <script>
-          document.getElementById('valora-contact-form').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            var btn = document.getElementById('valora-submit-btn');
-            var form = document.getElementById('valora-contact-form');
-            var success = document.getElementById('valora-success');
-            var error = document.getElementById('valora-error');
-
-            btn.textContent = 'Sending…';
-            btn.disabled = true;
-            error.style.display = 'none';
-
-            try {
-              var res = await fetch('https://formspree.io/f/mrednkkv', {
-                method: 'POST',
-                body: new FormData(form),
-                headers: { 'Accept': 'application/json' }
-              });
-
-              if (res.ok) {
-                form.style.display = 'none';
-                success.style.display = 'block';
-              } else {
-                error.style.display = 'block';
-                btn.textContent = 'Send Message →';
-                btn.disabled = false;
-              }
-            } catch(err) {
-              error.style.display = 'block';
-              btn.textContent = 'Send Message →';
-              btn.disabled = false;
-            }
-          });
-        </script>
-
       </div>
     </div>
   </div>
 </section>
 
-
-
-<!-- CTA BANNER -->
+<!-- ─── CTA ────────────────────────────── -->
 <section id="cta">
-  <div class="container">
-    <h2 class="cta-title">Ready to Make AI Work for Your Business?</h2>
-    <p class="cta-sub">Join small businesses across the Bay Area transforming the way they work with AI — simply and confidently.</p>
-    <div class="cta-buttons">
+  <div style="position:relative;z-index:1;">
+    <p class="eyebrow anim" style="justify-content:center;">Ready to grow</p>
+    <h2 class="cta-title anim anim-d1">Make <em>AI work</em> for your business</h2>
+    <p class="cta-sub anim anim-d2">Join small businesses across the Bay Area transforming the way they work — simply and confidently.</p>
+    <div class="cta-btns anim anim-d3">
       <a href="#contact" class="btn-primary">Book a Free Consultation</a>
-      <a href="#contact" class="btn-secondary">Send Us a Message</a>
+      <a href="#contact" class="btn-outline">Send a Message</a>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
+<!-- ─── FOOTER ─────────────────────────── -->
 <footer>
   <div class="footer-inner">
     <div>
-      <a href="#home" class="logo" style="font-size:1rem;">
-        <div class="logo-mark" style="width:26px;height:26px;font-size:0.7rem;">VS</div>
-        Valora <span>Systems</span>
+      <a href="#home" class="footer-logo">
+        <div class="nav-logo-mark">VS</div>
+        Valora Systems
       </a>
-      <p class="footer-copy" style="margin-top:0.5rem;">© 2025 Valora Systems. Bay Area, California.</p>
+      <p class="footer-copy">© 2025 Valora Systems · Bay Area, California</p>
     </div>
-    <ul class="footer-links">
+    <ul class="footer-nav">
       <li><a href="#services">Services</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#contact">Contact</a></li>
-      <li><a href="#schedule">Book a Call</a></li>
     </ul>
   </div>
 </footer>
 
 <script>
-  // Scroll animations
-  const observer = new IntersectionObserver((entries) => {
+  // ── Nav: dark only over hero ──────────────
+  const nav = document.getElementById('nav');
+  const hero = document.getElementById('home');
+
+  function updateNav() {
+    const scrolled = window.scrollY > 40;
+    nav.classList.toggle('scrolled', scrolled);
+    const r = hero ? hero.getBoundingClientRect() : null;
+    const overHero = r ? (r.top <= 62 && r.bottom > 62) : false;
+    nav.classList.toggle('over-hero', overHero);
+  }
+  window.addEventListener('scroll', updateNav, { passive: true });
+  updateNav();
+
+  // ── Scroll-triggered reveal ──────────────
+  const revealObs = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        observer.unobserve(e.target);
+        e.target.classList.add('in');
+        revealObs.unobserve(e.target);
       }
     });
-  }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+  }, { threshold: 0.1, rootMargin: '0px 0px -48px 0px' });
 
-  document.querySelectorAll('.fade-up, .stagger').forEach(el => observer.observe(el));
+  document.querySelectorAll('.anim, .anim-scale').forEach(el => revealObs.observe(el));
 
-  // Nav scroll effect
-  const nav = document.querySelector('nav');
-  window.addEventListener('scroll', () => {
-    nav.style.background = window.scrollY > 40
-      ? 'rgba(5, 13, 26, 0.97)'
-      : 'rgba(5, 13, 26, 0.85)';
-  });
+  // ── Count-up animation ───────────────────
+  function countUp(el, target, duration = 1200) {
+    const start = performance.now();
+    const update = (now) => {
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.round(eased * target);
+      if (progress < 1) requestAnimationFrame(update);
+    };
+    requestAnimationFrame(update);
+  }
+  const countEls = document.querySelectorAll('[data-count]');
+  const countObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        countUp(e.target, parseInt(e.target.dataset.count));
+        countObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.5 });
+  countEls.forEach(el => countObs.observe(el));
 
-  // Form submission (Formspree)
-  const form = document.getElementById('contact-form');
-  const success = document.getElementById('form-success');
+  // ── Contact form ─────────────────────────
+  const form      = document.getElementById('contact-form');
+  const successEl = document.getElementById('form-success');
+  const errorEl   = document.getElementById('form-error');
+  const submitBtn = document.getElementById('submit-btn');
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const data = new FormData(form);
-    const btn = form.querySelector('.btn-submit');
-    btn.textContent = 'Sending…';
-    btn.disabled = true;
-
+    submitBtn.textContent = 'Sending…';
+    submitBtn.disabled = true;
+    errorEl.style.display = 'none';
     try {
-      const res = await fetch(form.action, {
+      const res = await fetch('https://formspree.io/f/mrednkkv', {
         method: 'POST',
-        body: data,
+        body: new FormData(form),
         headers: { 'Accept': 'application/json' }
       });
-
       if (res.ok) {
         form.style.display = 'none';
-        success.style.display = 'block';
+        successEl.style.display = 'block';
       } else {
-        btn.textContent = 'Try again';
-        btn.disabled = false;
+        errorEl.style.display = 'block';
+        submitBtn.textContent = 'Send Message →';
+        submitBtn.disabled = false;
       }
     } catch {
-      btn.textContent = 'Try again';
-      btn.disabled = false;
+      errorEl.style.display = 'block';
+      submitBtn.textContent = 'Send Message →';
+      submitBtn.disabled = false;
     }
   });
 </script>
