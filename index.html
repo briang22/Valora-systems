@@ -1,40 +1,84 @@
-/* â”€â”€â”€ RESET â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+(function () {
+  const nav = document.getElementById('nav');
+  const darkHero = document.querySelector('.dark-hero');
 
-/* â”€â”€â”€ TOKENS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
-:root {
-  --bg:       #ffffff;
-  --bg-soft:  #f6f7fb;
-  --bg-tint:  #eef2fb;
-  --dark:     #050914;
-  --dark-2:   #080d1c;
+  function updateNav() {
+    const scrolled = window.scrollY > 40;
+    nav.classList.toggle('scrolled', scrolled);
+    if (darkHero) {
+      const r = darkHero.getBoundingClientRect();
+      const overHero = r.top <= 64 && r.bottom > 64;
+      nav.classList.toggle('over-hero', overHero);
+    }
+  }
+  window.addEventListener('scroll', updateNav, { passive: true });
+  updateNav();
 
-  --accent:      #2c6ee8;
-  --accent-hi:   #4d8ef5;
-  --accent-soft: #8fb4f7;
-  --accent-lo:   rgba(44,110,232,0.09);
-  --accent-glow: rgba(44,110,232,0.2);
+  const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        revealObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -48px 0px' });
+  document.querySelectorAll('.anim, .anim-scale').forEach((el) => revealObs.observe(el));
 
-  --ink:    #0b1120;
-  --ink-2:  #4a5568;
-  --ink-3:  #94a3b8;
-  --on-dark:   #a9bde0;
-  --on-dark-2: #61749c;
+  const form = document.getElementById('contact-form');
+  if (form) {
+    const successEl = document.getElementById('form-success');
+    const errorEl = document.getElementById('form-error');
+    const submitBtn = document.getElementById('submit-btn');
 
-  --line:      rgba(0,0,0,0.08);
-  --line-dark: rgba(255,255,255,0.09);
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      submitBtn.textContent = 'Sendingâ€¦';
+      submitBtn.disabled = true;
+      errorEl.style.display = 'none';
+      try {
+        const res = await fetch('https://formspree.io/f/mrednkkv', {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { Accept: 'application/json' },
+        });
+        if (res.ok) {
+          form.style.display = 'none';
+          successEl.style.display = 'block';
+        } else {
+          errorEl.style.display = 'block';
+          submitBtn.textContent = 'Send Message â†’';
+          submitBtn.disabled = false;
+        }
+      } catch {
+        errorEl.style.display = 'block';
+        submitBtn.textContent = 'Send Message â†’';
+        submitBtn.disabled = false;
+      }
+    });
+  }
 
-  --display: 'Instrument Serif', serif;
-  --body:    'Inter', sans-serif;
-  --mono:    'Space Mono', monospace;
-
-  --spring: cubic-bezier(0.16, 1, 0.3, 1);
-  --ease:   cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-body {
-  background: var(--bg);
+  const splash = document.getElementById('splash');
+  if (splash) {
+    const words = ['Grow.', 'Manage.', 'Expand.'];
+    const row = document.getElementById('spWordmark');
+    const T0 = 1.4, GAP = 0.16;
+    words.forEach((w, i) => {
+      const span = document.createElement('span');
+      span.className = 'sp-word' + (i === words.length - 1 ? ' acc' : '');
+      span.textContent = w;
+      span.style.animationDelay = (T0 + i * GAP) + 's';
+      row.appendChild(span);
+    });
+    document.body.classList.add('splash-open');
+    const exitAt = (T0 + words.length * GAP + 0.9) * 1000;
+    setTimeout(() => {
+      splash.classList.add('exit');
+      document.body.classList.remove('splash-open');
+      setTimeout(() => splash.remove(), 800);
+    }, exitAt);
+  }
+})();
+        background: var(--bg);
   color: var(--ink);
   font-family: var(--body);
   font-weight: 400;
